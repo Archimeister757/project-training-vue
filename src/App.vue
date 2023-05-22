@@ -1,30 +1,48 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+    <div class="app">
+        
+    </div>
 </template>
 
+<script>
+
+    export default {
+      components: {
+        PostList
+      },
+        data() {
+            return {
+                posts: [
+                    { id: 1, title: "Javascript-1", body: "Описание поста-1" },
+                    { id: 2, title: "Javascript-2", body: "Описание поста-2" },
+                    { id: 3, title: "Javascript-3", body: "Описание поста-3" },
+                ],
+                title: "",
+                body: "",
+            };
+        },
+        methods: {
+            addPost() {
+              const newPost = {
+                id: Date.now(),
+                title: this.title,
+                body: this.body,
+              }
+              this.posts.push(newPost);
+              this.title = "";
+              this.body = "";
+            },
+        },
+    };
+</script>
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
 
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
+    .app {
+        padding: 20px;
+    }
 </style>
