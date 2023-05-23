@@ -1,15 +1,18 @@
 <template>
     <div class="app">
-        
+        <post-form :addPost="addPost"/>
+        <post-list :posts="posts"/>
     </div>
 </template>
 
 <script>
+    import PostForm from "@/components/PostForm.vue";
+    import PostList from "@/components/PostList.vue";
 
     export default {
-      components: {
-        PostList
-      },
+        components: {
+            PostList, PostForm
+        },
         data() {
             return {
                 posts: [
@@ -17,20 +20,11 @@
                     { id: 2, title: "Javascript-2", body: "Описание поста-2" },
                     { id: 3, title: "Javascript-3", body: "Описание поста-3" },
                 ],
-                title: "",
-                body: "",
             };
         },
         methods: {
             addPost() {
-              const newPost = {
-                id: Date.now(),
-                title: this.title,
-                body: this.body,
-              }
-              this.posts.push(newPost);
-              this.title = "";
-              this.body = "";
+              
             },
         },
     };
