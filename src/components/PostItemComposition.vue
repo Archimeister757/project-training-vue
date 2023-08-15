@@ -6,7 +6,7 @@
             <div><strong>Описание:</strong> {{ post.body }}</div>
         </div>
         <div class="post__btns">
-            <my-button class="post__btn" @click="$emit('remove', post)">
+            <my-button class="post__btn" @click="removePost">
                 Удалить
             </my-button>
         </div>
@@ -22,6 +22,12 @@ export default {
             type: Object,
             required: true,
         },
+    },
+    setup(props, { emit }) {
+        const removePost = (post) => {
+            emit("remove", post);
+        };
+        return { removePost };
     },
 };
 </script>

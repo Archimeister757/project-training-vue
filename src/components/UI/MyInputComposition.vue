@@ -8,11 +8,12 @@ export default {
     props: {
         modelValue: [String, Number],
     },
-    methods: {
-        updateInput(event) {
+    setup(props, { emit }) {
+        const updateInput = (event) => {
             console.log(event);
-            this.$emit("update:modelValue", event.target.value);
-        },
+            // emit("update:modelValue", event.target.value);
+        };
+        return { updateInput };
     },
 };
 </script>
